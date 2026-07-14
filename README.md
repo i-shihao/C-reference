@@ -420,8 +420,47 @@ int main()
 }
 ```
 ## 6. Switch Case
-Content for Switch Case
+The switch statement is an efficient alternative to multiple if-else statements when checking a single variable against multiple constant values
+. Switch statements compile to jump tables in assembly, making them very efficient. Instead of comparing the value multiple times (like if-else), the switch statement uses the value as an index into a jump table. This is why switch only works with integer types.
 
+```
+#include <stdio.h>
+
+int main ()
+{
+        int no=0;
+        printf("Enter the no corresponding to weeks\n");
+        scanf("%d",&no);
+
+        switch(no) {
+                case 1:
+                        printf("Its Monday\n");
+                        break;
+                case 2:
+                        printf("Its Tuesday\n");
+                        break;
+                case 3:
+                        printf("Its Wednesday\n");
+                        break;
+                case 4:
+                        printf("Its Thursday\n");
+                        break;
+                case 5:
+                        printf("Its Friday\n");
+                        break;
+                case 6:
+                        printf("Its Staturday\n");
+                        break;
+                case 7:
+                        printf("Its Sunday yoho\n");
+                        break;
+                default:
+                        printf("Invalid no!\n");
+                }
+
+        return 0;
+}
+```
 ## 7. Loops
 Content for Loops
 
