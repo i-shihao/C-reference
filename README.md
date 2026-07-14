@@ -502,7 +502,47 @@ int main ()
 ```
 
 ## 8. Break & Continue
-Content for Break & Continue
+These statements modify loop behavior. break exits the current loop entirely, while continue skips the current iteration and jumps to the next.
+break and continue are implemented as unconditional jump instructions. break jumps to the code after the loop, while continue jumps to the loop's condition check (or increment in a for loop).
+
+```
+#include <stdio.h>
+
+int main ()
+{
+        /* break example */
+        int i = 0;
+        while(i < 10) {
+                printf("index:%d\n",i);
+                if(i==5)
+                        break;
+                i++;
+        }
+
+        /* break in nested loop */
+        int y = 0;
+        int q = 0;
+        while(y <10) {
+                printf("y is:%d\n",y);
+                while(q<5) {
+                        if(q==3)
+                                break;
+                        printf("q is:%d\n",q);
+                        q++;
+                }
+                y++;
+        }
+
+        /* continue example */
+        for(int x =0;x<35; x++) {
+                if( x >= 20 && x <= 30)
+                        continue;
+                printf("indice:%d\n",x);
+        }
+
+        return 0;
+}
+```
 
 ## 9. Goto Statement
 Content for Goto Statement
