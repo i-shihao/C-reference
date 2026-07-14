@@ -396,8 +396,29 @@ int main ()
 }
 ```
 ## 5. If-Else Statements
-Content for If-Else Statements
+Conditional statements let your program make decisions based on conditions. The if-else structure executes code blocks based on boolean expressions. The if statement compiles to conditional jump instructions in assembly. The CPU evaluates the condition and either jumps over the code block or executes it. This is why conditions must be simple - complex conditions require multiple comparisons.
 
+```
+#include <stdio.h>
+
+int main()
+{
+        int age = 0;
+        printf("Enter you age\n");
+        scanf("%d",&age);
+
+        if(age>=18 && age<=90) {
+                printf("You are eligible to drive\n");
+        }else if (age <= 18) {
+                printf("You cannot apply for driving licence\n");
+        }else if (age >=90) {
+                printf("You are too old to drive a car\n");
+        }
+
+        printf("Invalid age!");
+        return 0;
+}
+```
 ## 6. Switch Case
 Content for Switch Case
 
