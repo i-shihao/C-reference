@@ -79,7 +79,6 @@ This repository serves as a comprehensive C reference guide, covering fundamenta
 ## 1. Basic Structure
 Every C program follows a standard structure that tells the compiler how to interpret your code. Understanding this structure is crucial as it forms the foundation of all C programs.
 
-### Basic Structure
 ```
 #include <stdio.h>
 
@@ -93,7 +92,6 @@ int main () {
 ## 2. Basic Syntax
 C has specific rules for writing code. Understanding syntax is like learning the grammar of the language - it tells you how to structure statements correctly.
 
-### Basic syntex
 ```
 #include <stdio.h>
 
@@ -121,7 +119,6 @@ int main()
 ## 3. Variables & Data Types
 Variables are named memory locations that store data. Data types tell the compiler how much memory to allocate and what kind of operations you can perform.
 
-### Variables and Data Types
 ```
 #include <stdio.h>
 #include <stdint.h>
@@ -194,7 +191,32 @@ int main () {
 ```
 
 ### 3.1 Typedef
-Content for Typedef
+Typedef lets you create aliases for existing data types. Think of it like creating your own custom type names in C.
+
+```
+#include <stdio.h>
+
+int main ()
+{
+        /* Typedef */
+        typedef unsigned char DB;
+        typedef unsigned short DW;
+        typedef unsigned int  DD;
+        typedef unsigned long DQ;
+
+        DB a = 1;
+        DW b = 2;
+        DD c = 3;
+        DQ d = 4;
+
+        printf("size of DB:%d\n",sizeof(a));
+        printf("size of DW:%d\n",sizeof(b));
+        printf("size of DD:%d\n",sizeof(c));
+        printf("size of DQ:%d\n",sizeof(d));
+
+        return 0;
+}
+```
 
 ### 3.2 Enumerations
 Content for Enumerations
