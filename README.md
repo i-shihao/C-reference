@@ -462,7 +462,44 @@ int main ()
 }
 ```
 ## 7. Loops
-Content for Loops
+Loops allow you to execute a block of code multiple times. C provides three types of loops for different use cases. Loops compile to jump instructions that either go back to the beginning or forward past the loop. The for loop is particularly efficient because it combines initialization, condition, and increment in a single line that the compiler can optimize well.
+```
+#include <stdio.h>
+
+int main ()
+{
+        /* classic for loop */
+        for (int i=0; i<10;i++) {
+                printf("index:%d\n",i);
+        }
+
+        /* while loop */
+        int num =1;
+        while(num) {
+                printf("while:%d\n",num);
+                num++;
+                if(num == 10)
+                        num = 0;
+        }
+
+        /* do while loop */
+        int once = 10;
+        do{
+                printf("do while:%d\n",once);
+                once++;
+        }while(once <=9);
+
+        /* nested loops */
+        for (int a = 0; a < 10; a++) {
+                printf("nest loop:%d\n",a);
+                for(int j =0;j <5;j++) {
+                        printf("nest loop2:%d\n",j);
+                }
+        }
+
+        return 0;
+}
+```
 
 ## 8. Break & Continue
 Content for Break & Continue
