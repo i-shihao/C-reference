@@ -545,8 +545,58 @@ int main ()
 ```
 
 ## 9. Goto Statement
-Content for Goto Statement
+Goto provides an unconditional jump to a labeled statement. While generally discouraged (can make code spaghetti), it has specific valid uses like breaking out of nested loops or error handling. goto compiles directly to a jump instruction in assembly, making it very efficient. This is why it's sometimes used in performance-critical code or kernel programming for error recovery. 
 
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+int main ()
+{
+        /* goto statement */
+
+        int no;
+        printf("Enter any positive or negative no\n");
+        scanf("%d",&no);
+
+        if(no < 0)
+                goto negative;
+        goto positive;
+
+        negative:
+                printf("It is a negative no\n");
+        return 0;
+
+        positive:
+                printf("it is a positive no\n");
+
+        /* goto statements are used to break nested loops */
+        for (int i =0;i<10;i++) {
+                printf("index:%d\n",i);
+                for(int j=0; j<5; j++) {
+                        if (j == 4) {
+                                goto end_loop;
+                        }
+                        printf("inside index:%d\n",j);
+                }
+        }
+
+        end_loop:
+                printf("nested loop has been terminated\n");
+
+        /* It is mostly used in kernel programming to handle errors */
+        int* a = (int*)malloc(1* sizeof(int));
+        if(!a)
+                goto free_mem;
+
+        printf("memory has been allocated\n");
+        free(a);
+        return 0;
+
+free_mem:
+        free(a);
+}
+```
 ## 10. Type Casting
 Content for Type Casting
 
