@@ -329,8 +329,37 @@ int main ()
 ```
 
 ### 3.5 Restrict Keyword
-Content for Restrict Keyword
+The restrict keyword tells the compiler that a pointer is the only way to access the memory it points to. This enables better optimization by allowing the compiler to assume no aliasing occurs. It is an optimization hint that enables the compiler to generate faster code by assuming pointers don't overlap. This is particularly important for vectorization and loop optimization. However, if you violate the restrict contract (by passing overlapping pointers), the program behavior becomes undefined.
+```
+#include <stdio.h>
 
+/* function to demonstrate restrict keyword */
+
+void maybe_change(int *p)
+{
+        *p = 100;
+}
+
+int main ()
+{
+        /* Without restrict keyword */
+        int a = 10;
+        int *ptr = &a;
+        *ptr = 20;
+        maybe_change(ptr);
+        int x = *ptr;
+        printf("the value of x:%d\n",x);
+
+        /* With restrict keyword */
+        int* restrict ptr2 = &a;
+        *ptr2 = 30;
+        maybe_change(ptr2);
+        int y = *ptr2;
+        printf("the value of y:%d\n",y);
+
+        return 0;
+}
+```
 ## 4. Format Specifiers & Escape Sequences
 Content for Format Specifiers & Escape Sequences
 
