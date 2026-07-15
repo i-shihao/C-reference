@@ -1333,8 +1333,35 @@ int main()
 }
 ```
 ## 23. Dynamic Memory Allocation
-Content for Dynamic Memory Allocation
+Dynamic memory allocation allows you to allocate memory at runtime. This is essential for creating data structures that can grow and shrink. Dynamic memory allocation requests memory from the operating system's heap. The memory is managed by the memory allocator, which maintains free lists. Memory management is done at the system call level (brk/sbrk) or through mmap for large allocations.
 
+```
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+
+        /* malloc */
+        int *ptr = (int*)malloc( 2 *sizeof(int));
+        if(!ptr)
+                printf("malloc() error\n");
+        free(ptr);
+
+        /* calloc 0 initialized */
+        int  *ptr2 = (int*)calloc(2, sizeof(int));
+        if(!ptr2)
+                printf("realloc() error\n");
+
+        /* realloc - allocated a new size  */
+        int *new_ptr = (int*)realloc(ptr, 4 * sizeof(int));
+        if(!new_ptr)
+                printf(" realloc() error\n");
+        free(new_ptr);
+
+        return 0;
+}
+```
 ## 24. Memory Leaks
 Content for Memory Leaks
 
