@@ -974,7 +974,25 @@ int main() {
 ```
 
 ### 17.4 Void Pointers
-Content for Void Pointers
+A void* pointer is a generic pointer that can hold the address of any data type (int, float, char, etc.). However, you cannot directly dereference it; you must cast it to a specific type before using 
+
+```
+#include <stdio.h>
+
+int main() {
+    int a = 10;
+    float b = 5.5;
+    void *ptr;
+
+    ptr = &a;
+    printf("Int: %d\n", *(int*)ptr); // Cast to int*
+
+    ptr = &b;
+    printf("Float: %.1f\n", *(float*)ptr); // Cast to float*
+    return 0;
+}
+
+```
 
 ### 17.5 Null Pointers
 Content for Null Pointers
