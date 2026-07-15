@@ -1010,8 +1010,26 @@ int main() {
 
 ```
 ### 17.6 Dangling Pointers
-Content for Dangling Pointers
+A Dangling Pointer points to a memory location that has already been freed or deleted (e.g., using free()). The pointer still holds the old address, but the data is gone, leading to undefined behavior if accessed.
 
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *ptr = (int*)malloc(sizeof(int));
+    *ptr = 10;
+    free(ptr); // Memory freed
+
+    // ptr is now a DANGLING pointer
+    // *ptr = 20; // DANGER! Undefined behavior!
+
+    ptr = NULL; // Fix: Set to NULL after free
+    return 0;
+}
+
+
+```
 ### 17.7 Wild Pointers
 Content for Wild Pointers
 
