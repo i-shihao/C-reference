@@ -995,8 +995,20 @@ int main() {
 ```
 
 ### 17.5 Null Pointers
-Content for Null Pointers
+A Null Pointer is a pointer that is explicitly set to point to "nothing" (address 0). It is used as a safe guard to ensure a pointer is not pointing to random memory. You should always check if a pointer is NULL before using it.
+```
+#include <stdio.h>
 
+int main() {
+    int *ptr = NULL; // Points to nothing
+
+    if (ptr == NULL) {
+        printf("Pointer is null, cannot use.\n");
+    }
+    return 0;
+}
+
+```
 ### 17.6 Dangling Pointers
 Content for Dangling Pointers
 
