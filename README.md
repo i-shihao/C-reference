@@ -1049,8 +1049,19 @@ int main() {
 ```
 
 ### 17.8 Function Pointers
-Content for Function Pointers
+A Function Pointer stores the address of a function. You can use it to call different functions dynamically at runtime, or pass a function as an argument to another function.
+```
+#include <stdio.h>
 
+int add(int a, int b) { return a + b; }
+
+int main() {
+    int (*func_ptr)(int, int) = add; // Pointer to add function
+    int result = func_ptr(5, 3);     // Call via pointer
+    printf("Sum: %d\n", result);     // Output: 8
+    return 0;
+}
+```
 ## 18. Structures
 Content for Structures
 
