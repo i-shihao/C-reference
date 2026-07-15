@@ -1189,8 +1189,48 @@ int main()
 
 ```
 ## 19. Unions
-Content for Unions
+ Unions are similar to structures but share the same memory space for all members. Only one member can be active at a time, making unions memory-efficient for variant data.  Unions allow you to interpret the same memory location in different ways. This is useful for type punning, network protocols, and hardware register access. However, reading a union member that wasn't the last written to results in undefined behavior.
 
+```
+#include <stdio.h>
+
+typedef union {
+        char a;
+        int age;
+        int id;
+} student;
+
+/* unions with struct */
+union date {
+        int day;
+        int month;
+        int year;
+};
+
+typedef struct {
+        char *name;
+        int age;
+        union date d1;
+} person;
+
+
+int main ()
+{
+        student john;
+        john.age= 122;
+        printf("sizeof person%d\n",sizeof(john));
+
+        union date d1;
+        printf("sizeof d1 unoin:%d\n",sizeof(d1));
+
+        person angeli;
+        angeli.d1.day = 12;
+        printf("sizeof angeli:%zu\n",sizeof(angeli));
+
+        return 0;
+}
+
+```
 ## 20. Memory Layout
 Content for Memory Layout
 
