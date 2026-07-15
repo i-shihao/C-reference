@@ -1288,7 +1288,40 @@ int main() {
 }
 ```
 ## 21. Storage Classes
-Content for Storage Classes
+Storage classes determine the scope, lifetime, and initial value of variables. They give you control over how variables are stored and accessed. Storage classes affect where variables are stored in memory. auto variables go on the stack, static and extern variables go in the data segment, and register variables (if honored) are stored in CPU registers for faster access.
+
+```
+#include <stdio.h>
+
+extern int  extern_int;
+extern char extern_char;
+extern int extern_function(int, int);
+
+
+int main()
+{
+        /* auto storage class */
+        auto int a = 10;
+        auto int b = 10;
+
+        /* static storage class */
+        static int c = 20;
+        static int d = 30;
+        static char e = 'e';
+
+        /* extern storage class */
+        printf("extern_int value:%d\n",extern_int);
+        printf("extern_char value:%x\n",extern_char);
+        int result = extern_function(a,b);
+        printf("result of externfunction:%d\n",result);
+
+        /* register storage class */
+        register int a0 = 0x12;
+        register char h = 0x64;
+
+        return 0;
+}
+```
 
 ## 22. Static Variables
 Static variables maintain their value between function calls. They have static storage duration and are initialized only once. Static variables are allocated in the data segment of the program, not on the stack. They persist for the entire program lifetime. This is why they're initialized at program startup and maintain their values across function calls.
