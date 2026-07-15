@@ -806,8 +806,22 @@ int main()
 
 ```
 ## 16. Strings
-Content for Strings
+n C, a string is simply an array of characters ending with a null terminator ('\0'). You can manipulate strings using char arrays or char* pointers, and use library functions like strlen, strcpy, etc., from <string.h>.
 
+```
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str1[] = "Hello"; // Array of characters
+    char *str2 = "World";  // Pointer to a string literal
+
+    printf("%s %s\n", str1, str2); // Output: Hello World
+    printf("Length of str1: %zu\n", strlen(str1)); // Output: 5
+    return 0;
+}
+
+```
 ## 17. Pointers
 Pointers are variables that store memory addresses. They're the most powerful and dangerous feature of C, giving you direct control over memory. Pointers directly represent memory addresses in the CPU's address space. When you dereference a pointer, the CPU reads or writes at that specific memory location. This is why pointer operations are fast - they're just memory operations.
 
