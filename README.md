@@ -721,7 +721,40 @@ int square(int a)
 ```
 
 ## 12. Recursion
-Content for Recursion
+A recursive function is one that calls itself. Recursion is useful for problems that can be broken
+into smaller, similar subproblems. Each recursive call creates a new stack frame with its own local variables. If recursion goes too deep, it can cause a stack overflow. Tail recursion optimization allows the compiler to reuse the same stack frame for recursive calls.
+```
+#include <stdio.h>
+
+/* Recursive using fibonacci */
+int fibonacci(int n) {
+    if (n <= 1) {
+        return n;
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+/* recursive using factorial */
+int factorial(int n )
+{
+        if (n == 0 || n == 1)
+                return n;
+
+        printf("result is:%d\n",n);
+        return n * factorial(n-1);
+}
+
+int main()
+{
+        int number = 10;
+        printf("Factorial of %d\n",factorial(number));
+
+        printf("Fibonacci of 7:%d\n",fibonacci(7));
+
+        return 0;
+}
+
+```
 
 ## 13. Variable Arguments
 Content for Variable Arguments
