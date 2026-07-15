@@ -1031,7 +1031,22 @@ int main() {
 
 ```
 ### 17.7 Wild Pointers
-Content for Wild Pointers
+A Wild Pointer is an uninitialized pointer. It contains a random garbage address that points to an unknown location in memory. Using it can crash your program or corrupt data.
+```
+#include <stdio.h>
+
+int main() {
+    int *ptr; // WILD POINTER! Not initialized, contains garbage address
+
+    // *ptr = 10; // DANGER! Writing to random memory
+
+    // Fix: Always initialize your pointers
+    int a = 10;
+    ptr = &a; // Now it's safe
+    return 0;
+}
+
+```
 
 ### 17.8 Function Pointers
 Content for Function Pointers
