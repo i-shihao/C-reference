@@ -860,30 +860,116 @@ int main()
 ```
 
 ### 17.1 Pointer Arithmetic
-Content for Pointer Arithmetic
+Arrays and pointers are closely related. Understanding this relationship lets you use arrays more efficiently and perform operations that would be difficult otherwise. Pointer arithmetic is CPU-level addressing. Adding 1 to an int* adds 4 to the memory address because ints are 4 bytes. This is why pointer types are important - they tell the compiler how much to increment the address.
 
-### 17.2 Arrays & Pointers
-Content for Arrays & Pointers
+```
+#include <stdio.h>
 
-### 17.3 Arrays as Function Arguments
-Content for Arrays as Function Arguments
+int main() {
+    int arr[5] = {10, 20, 30, 40, 50};
 
-### 17.4 Call by Value & Call by Reference
+    /* Array name is a pointer to first element */
+    printf("arr = %p\n", (void*)arr);
+    printf("&arr[0] = %p\n", (void*)&arr[0]);
+
+    /* Pointer arithmetic */
+    int* ptr = arr;
+    printf("ptr[0] = %d, *ptr = %d\n", ptr[0], *ptr);
+    printf("ptr[1] = %d, *(ptr+1) = %d\n", ptr[1], *(ptr+1));
+
+    /* Incrementing pointer */
+    ptr++;  // Moves to next element
+    printf("After ptr++: %d\n", *ptr);
+
+    /* Difference between pointers */
+    ptr = &arr[0];
+    int* end = &arr[4];
+    int elements = end - ptr + 1;
+    printf("Array size: %d\n", elements);
+
+    /* 2D array pointer arithmetic */
+    int matrix[3][2] = {{1,2}, {3,4}, {5,6}};
+    int (*rowPtr)[2] = matrix;  // Pointer to array of 2 ints
+
+    printf("matrix[0][0]: %d\n", rowPtr[0][0]);
+    printf("matrix[1][1]: %d\n", *(*(rowPtr + 1) + 1));
+
+    /* Array of pointers */
+    int a = 1, b = 2, c = 3;
+    int* ptrs[] = {&a, &b, &c};
+    printf("ptrs[1] points to: %d\n", *ptrs[1]);
+
+    /* Pointer arithmetic with different types */
+    char charArr[10];
+    char* charPtr = charArr;
+    int* intPtr = (int*)charArr;
+
+    printf("charPtr+1 moves %ld bytes\n", (charPtr+1) - charPtr);
+    printf("intPtr+1 moves %ld bytes\n", (char*)(intPtr+1) - charPtr);
+    return 0;
+}
+
+```
+### 17.2 Arrays as Function Arguments
+When you pass an array to a function in C, the entire array is not copied. Instead, the function receives a pointer to the first element of the array. This means the function is working directly with the original array, so any changes made inside the function will affect the original array outside it.
+
+```
+#include <stdio.h>
+
+int sumallno (int *ptr)
+{
+        int result = 0;
+        int i = 1;
+        while(*ptr)
+        {
+                result += *ptr;
+                *ptr++;
+        }
+        return result;
+}
+
+void printchar(char *msg)
+{
+        while(*msg)
+        {
+                printf("char:%c\n",*msg);
+                *msg++;
+        }
+}
+
+int main ()
+{
+        char char_arr []  = {'a','b','c','d','e',0};
+        int int_arr [] = {1,2,3,4,5,6,7,8,9,10};
+
+        int *ptr = int_arr;
+        char *ptr2 = char_arr;
+
+        int result = sumallno(ptr);
+        printf("result is:%d\n",result);
+
+        printchar(ptr2);
+
+        return 0;
+}
+
+```
+### 17.3 Call by Value & Call by Reference
 Content for Call by Value & Call by Reference
 
-### 17.5 Void Pointers
+### 17.4 Void Pointers
 Content for Void Pointers
 
-### 17.6 Null Pointers
+### 17.5 Null Pointers
 Content for Null Pointers
 
-### 17.7 Dangling Pointers
+### 17.6 Dangling Pointers
 Content for Dangling Pointers
 
-### 17.8 Wild Pointers
+### 17.7 Wild Pointers
 Content for Wild Pointers
 
-### 17.9 Function Pointers
+### 17.8 Function Pointers
 Content for Function Pointers
 
 ## 18. Structures
