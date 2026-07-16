@@ -1708,8 +1708,26 @@ Content for Header Files & Multi-file Programs
 Content for C & Assembly Integration
 
 ## 29. Command Line Arguments
-Content for Command Line Arguments
+Command line arguments allow programs to receive input from the command line. They're essential for creating configurable and interactive programs. The argv array is populated by the operating system's program loader. argc and argv are passed to main() by the C runtime startup code. The strings in argv are stored in the program's memory space as read-only strings.
+```
+#include <stdio.h>
 
+int main( int argc, char *argv[] )
+{
+        printf("Number of arguments:%d\n", argc);
+        printf("argv[0] is filename:%s\n", argv[0]);
+
+        for( int i=0; i<argc; i++){
+                if(i == 0){
+                        printf("iindex:%d has value:%s\n",i,argv[i]);
+                        continue;
+                }
+                printf("index:%d has value:%s\n",i,argv[i]);
+        }
+
+        return 0;
+}
+```
 ## 30. File I/O
 Content for File I/O
 
