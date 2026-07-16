@@ -1838,8 +1838,42 @@ int main ()
 }
 ```
 ## 27. Header Files & Multi-file Programs
-Content for Header Files & Multi-file Programs
+Header files (.h) hold declarations (function prototypes, extern variables, macros, types), while source files (.c) hold definitions (actual function bodies and global variables). #include brings the declarations into a .c file so they can be used. Header guards (#ifndef/#define) prevent accidental double‑inclusion. extern tells the compiler a variable is defined in another .c file. To build, you compile all .c files together (e.g., gcc main.c utils.c -o program). This keeps large projects organized, avoids duplication, and makes code reusable.
 
+```
+/* utils.h */
+// ========== utils.h ==========
+#ifndef UTILS_H
+#define UTILS_H
+
+extern int counter;      // "Hey compiler, counter exists somewhere!"
+void increment(void);    // "Here's a function prototype"
+
+#endif
+
+/* utils.c */
+// ========== utils.c ==========
+#include "utils.h"
+
+int counter = 0;         // "Here's the actual variable (memory allocated)"
+
+void increment(void) {   // "Here's the actual function"
+    counter++;
+}
+
+/* main.c */
+// ========== main.c ==========
+#include <stdio.h>
+#include "utils.h"        // "Bring in the declarations"
+
+int main() {
+    printf("%d\n", counter);   // Uses counter from utils.c
+    increment();                // Calls function from utils.c
+    printf("%d\n", counter);
+    return 0;
+}
+
+```
 ## 28. C & Assembly Integration
 Content for C & Assembly Integration
 
