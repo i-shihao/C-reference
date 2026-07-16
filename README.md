@@ -1396,8 +1396,45 @@ int main()
 }
 ```
 ## 24. Memory Leaks
-Content for Memory Leaks
+Memory leaks occur when dynamically allocated memory isn't properly freed. This wastes memory and can eventually crash the program. Memory leaks occur when allocated memory is no longer accessible by the program. The operating system reclaims all memory when the program exits, but long-running programs (like servers) must carefully manage memory to avoid running out.
 
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+        int *ptr = (int*)malloc(2*sizeof(int));
+        if(!ptr) {
+                printf("malloc() error\n");
+                return 0;
+        }
+
+        /* free(ptr);  memory leak */
+        free(ptr);
+
+        char *char_ptr = (char*)malloc(3 * sizeof(char));
+        if(!char_ptr) {
+                printf("malloc() error\n");
+                return 0;
+        }
+        free(char_ptr);  /* if not done memory leak */
+
+        char_ptr = (char*)calloc(10, sizeof(char));
+        if(!char_ptr){
+                printf("malloc() error\n");
+                return 0;
+        }
+        free(char_ptr); /* if not done memory leak */
+
+        /* previous allocated memory has been lost
+         * and all this leads to memory leaks and could
+         * crash and entire system so make sure to free
+         * all dynamic memory allocaions. */
+
+        return 0;
+}
+```
 ## 25. Bitwise Operators
 Content for Bitwise Operators
 
